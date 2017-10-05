@@ -47,7 +47,7 @@ directory(){
 
 	echo -e "${Info} now you should perform domain txt record authorization"
 	read -p "then press 'enter' to continue"
-	if [[ "${type}" = "rsa" ]]; then
+	if [[ "${type}" = "1" ]]; then
 		 ./make.sh --renew -d ${domain} && mv -f /root/.acme.sh/${domain} /home/acme/crt/${domain}
 	else ./make.sh --renew -d ${domain} --ecc && mv -f /root/.acme.sh/${domain}_ecc /home/acme/crt/${domain}
 	fi
