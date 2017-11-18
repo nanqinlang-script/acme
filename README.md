@@ -8,7 +8,7 @@ SSL certification files production script
 
 based on [acme.sh](https://github.com/Neilpang/acme.sh)
 
-##usage
+## usage
 ```bash
 wget https://github.com/nanqinlang-script/acme/releases/download/1.5/acme_1.5.sh
 bash acme_1.5.sh
