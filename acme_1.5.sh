@@ -22,7 +22,7 @@ directory(){
 
 	check_root
 	directory
-	[[ ! -f make.sh ]] && wget https://raw.githubusercontent.com/nanqinlang-script/acme/master/acme.tar && tar -xf acme.tar && chmod +x make.sh && rm acme.tar
+	[[ ! -f make.sh ]] && wget https://raw.githubusercontent.com/nanqinlang-script/acme/master/make.sh && chmod +x make.sh
 	[[ ! -f make.sh ]] && echo -e "${Error} file not exist, please check!" && exit 1
 
 	echo -e "${Info} input your domain:"
@@ -44,20 +44,21 @@ directory(){
 	echo -e "${Info} now you should perform domain TXT record authorization"
 	read -p "then press 'enter' to continue"
 	if [[ "${type}" = "1" ]]; then
-		 ./make.sh --renew -d ${domain} && mv -f /root/.acme.sh/${domain} /home/${domain}
-	else ./make.sh --renew -d ${domain} --ecc && mv -f /root/.acme.sh/${domain}_ecc /home/${domain}_ecc
+		 ./make.sh --renew -d ${domain} && mv -f /root/.acme.sh/${domain} /home/acme/${domain}
+	else ./make.sh --renew -d ${domain} --ecc && mv -f /root/.acme.sh/${domain}_ecc /home/acme/${domain}_ecc
 	fi
 
-	rm -rf /root/.acme.sh /home/acme
+	#rm -rf /root/.acme.sh /home/acme
+	rm -rf /root/.acme.sh
 
 	if [[ "${type}" = "1" ]]; then
-		if [[ -d /home/${domain} ]]; then
-			 echo -e "${Info} SSL certificate files are in /home/${domain} "
+		if [[ -d /home/acme/${domain} ]]; then
+			 echo -e "${Info} SSL certificate files are in /home/acme/${domain} "
 		else echo -e "${Error} failed, please check !"
 		fi
 	else
-		if [[ -d /home/${domain}_ecc ]]; then
-			 echo -e "${Info} SSL certificate files are in /home/${domain}_ecc "
+		if [[ -d /home/acme/${domain}_ecc ]]; then
+			 echo -e "${Info} SSL certificate files are in /home/acme/${domain}_ecc "
 		else echo -e "${Error} failed, please check !"
 		fi
 	fi
