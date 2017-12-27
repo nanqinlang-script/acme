@@ -19,4 +19,4 @@ Releases History
 https://github.com/nanqinlang/acme/releases
 
 中文文档  
-https://sometimesnaive.org/article/linux/bash/acme.html
+https://sometimesnaive.org/article/linux/bash/acme
